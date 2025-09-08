@@ -213,6 +213,8 @@
             transition: transform 0.3s ease, border-color 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card::before {
@@ -246,6 +248,7 @@
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
             line-height: 1.7;
+            flex-grow: 1;
         }
 
         .project-tags {
@@ -267,16 +270,24 @@
         .project-links {
             display: flex;
             gap: 1rem;
+            margin-top: auto;
         }
 
         .project-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             color: var(--accent-color);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
         }
 
         .project-link:hover {
+            background: rgba(59, 130, 246, 0.1);
             color: var(--text-primary);
         }
 
@@ -462,7 +473,7 @@
         <div class="projects-grid">
             <div class="project-card">
                 <h3>FitExplorer</h3>
-                <p>A comprehensive fitness tracking platform that combines health data with intelligent AI insights. Features workout tracking, progress analysis, and personalized recommendations to help users achieve their fitness goals. This is my proudest project as it demonstrates the practical application of AI in health and wellness.</p>
+                <p>A comprehensive fitness tracking platform that combines health data with intelligent insights. My crown achievement showcasing full-stack development and user-centered design.</p>
                 <div class="project-tags">
                     <span class="tag">Python</span>
                     <span class="tag">Django</span>
@@ -471,8 +482,18 @@
                     <span class="tag">Health Data</span>
                 </div>
                 <div class="project-links">
-                    <a href="#" class="project-link">Live Demo →</a>
-                    <a href="https://github.com/CheungLeeLee" class="project-link">https://github.com/Chia213/FitExplorer →</a>
+                    <a href="https://www.fitexplorer.se/" class="project-link">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 5px;">
+                            <path d="M14.5 0h-13C.675 0 0 .675 0 1.5v13c0 .825.675 1.5 1.5 1.5h13c.825 0 1.5-.675 1.5-1.5v-13c0-.825-.675-1.5-1.5-1.5zM8 13c-2.75 0-5-2.25-5-5s2.25-5 5-5 5 2.25 5 5-2.25 5-5 5zm3-5c0 .55-.45 1-1 1s-1-.45-1-1 .45-1 1-1 1 .45 1 1z"/>
+                        </svg>
+                        Live Demo
+                    </a>
+                    <a href="https://github.com/Chia213/FitExplorer" class="project-link">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 5px;">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        Code
+                    </a>
                 </div>
             </div>
 
@@ -487,8 +508,12 @@
                     <span class="tag">Travel Planning</span>
                 </div>
                 <div class="project-links">
-                    <a href="#" class="project-link">Live Demo →</a>
-                    <a href="https://github.com/CheungLeeLee" class="project-link">GitHub →</a>
+                    <a href="https://github.com/CheungLeeLee/Travel-Assistent" class="project-link">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 5px;">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.20 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        Code
+                    </a>
                 </div>
             </div>
 
@@ -503,8 +528,12 @@
                     <span class="tag">AI Ethics</span>
                 </div>
                 <div class="project-links">
-                    <a href="#" class="project-link">Live Demo →</a>
-                    <a href="https://github.com/CheungLeeLee" class="project-link">GitHub →</a>
+                    <a href="https://github.com/CheungLeeLee/multi-agent" class="project-link">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 5px;">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.20 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        Code
+                    </a>
                 </div>
             </div>
 
@@ -519,8 +548,32 @@
                     <span class="tag">Real-time Data</span>
                 </div>
                 <div class="project-links">
-                    <a href="#" class="project-link">Live Demo →</a>
-                    <a href="https://github.com/CheungLeeLee" class="project-link">GitHub →</a>
+                    <a href="https://github.com/CheungLeeLee/Odds-Comparer" class="project-link">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 5px;">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.20 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        Code
+                    </a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h3>My Portfolio</h3>
+                <p>This responsive portfolio website showcasing my projects and skills. Built with modern HTML5, CSS3, and JavaScript, featuring a clean design with smooth animations and a dark/light theme toggle.</p>
+                <div class="project-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Responsive Design</span>
+                    <span class="tag">UI/UX</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/CheungLeeLee/Ivan-Lee-Portfolio" class="project-link">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 5px;">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.20 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        Code
+                    </a>
                 </div>
             </div>
         </div>

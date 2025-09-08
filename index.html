@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ivan Lee - Fullstack & AI Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #111111;
+            --accent-color: #3b82f6;
+            --text-primary: #ffffff;
+            --text-secondary: #a3a3a3;
+            --border-color: #333333;
+            --card-bg: #1a1a1a;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-content .description {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gradient);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .project-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-bg);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Light Theme */
+        .light-theme {
+            --primary-bg: #ffffff;
+            --secondary-bg: #f8fafc;
+            --text-primary: #1a1a1a;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --card-bg: #f8fafc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Ivan Lee</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <h1>Hi, I'm Ivan Lee</h1>
+            <p class="subtitle">Fullstack & AI Developer</p>
+            <p class="description">
+                Specializing in Python with hands-on Java experience from various projects, I combine AI, machine learning, 
+                and web development to build practical, intelligent tools that simplify complex problems.
+            </p>
+            <a href="#projects" class="cta-button">View My Work</a>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>My Journey</h3>
+                <p>
+                    I'm a passionate Python developer currently completing my final course in Machine Learning and Deep Learning 
+                    at Nackademin's AI Development program. What drives me is the potential of technology to solve real problems 
+                    while maintaining ethical responsibility and sustainability.
+                </p>
+                <p>
+                    My technical foundation spans Python, database design, and full-stack development with Django, Flask, and FastAPI. 
+                    What sets me apart is my diverse background in customer service, which taught me to understand user needs and 
+                    communicate effectively - skills that make me a better developer.
+                </p>
+                <p>
+                    My proudest project is <strong>FitExplorer</strong> - a fitness tracking platform that combines health data with 
+                    intelligent insights. Building something people actually use and benefit from? That's what gets me excited about development.
+                </p>
+                <h3>When I'm Not Coding</h3>
+                <p>
+                    When I'm not building applications, you'll find me working out at the gym doing calisthenics, playing badminton, 
+                    or strategizing over a chess game. I believe staying physically and mentally active feeds back into creating better technology.
+                </p>
+            </div>
+            <div class="skills-section">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: var(--accent-color);">Technologies I Work With</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">Java</div>
+                    <div class="skill-item">Django</div>
+                    <div class="skill-item">Flask</div>
+                    <div class="skill-item">FastAPI</div>
+                    <div class="skill-item">Machine Learning</div>
+                    <div class="skill-item">Deep Learning</div>
+                    <div class="skill-item">SQL</div>
+                    <div class="skill-item">Git</div>
+                    <div class="skill-item">Database Design</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2 class="section-title">Projects I've Built</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>FitExplorer</h3>
+                <p>A comprehensive fitness tracking platform that combines health data with intelligent AI insights. Features workout tracking, progress analysis, and personalized recommendations to help users achieve their fitness goals. This is my proudest project as it demonstrates the practical application of AI in health and wellness.</p>
+                <div class="project-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Django</span>
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">AI</span>
+                    <span class="tag">Health Data</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">Live Demo →</a>
+                    <a href="https://github.com/CheungLeeLee" class="project-link">https://github.com/Chia213/FitExplorer →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Travel Assistant</h3>
+                <p>An intelligent travel planning application that helps users discover destinations, plan itineraries, and get personalized travel recommendations based on preferences and budget. Combines AI with real-world travel data to create meaningful user experiences.</p>
+                <div class="project-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">AI</span>
+                    <span class="tag">API Integration</span>
+                    <span class="tag">Travel Planning</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">Live Demo →</a>
+                    <a href="https://github.com/CheungLeeLee" class="project-link">GitHub →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Multi-Agent Debate System</h3>
+                <p>A sophisticated AI system where multiple agents engage in structured debates on various topics. Demonstrates advanced AI concepts including agent coordination, natural language processing, and decision making. Built as part of my deep learning studies at Nackademin.</p>
+                <div class="project-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Deep Learning</span>
+                    <span class="tag">NLP</span>
+                    <span class="tag">Multi-Agent Systems</span>
+                    <span class="tag">AI Ethics</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">Live Demo →</a>
+                    <a href="https://github.com/CheungLeeLee" class="project-link">GitHub →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Odds Comparer</h3>
+                <p>A real-time sports betting odds comparison platform that aggregates data from multiple sources to help users find the best betting opportunities. Features live updates, statistical analysis, and data visualization for informed decision making.</p>
+                <div class="project-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">Web Scraping</span>
+                    <span class="tag">Data Analysis</span>
+                    <span class="tag">Real-time Data</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">Live Demo →</a>
+                    <a href="https://github.com/CheungLeeLee" class="project-link">GitHub →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <h2 class="section-title">Let's Work Together</h2>
+        <div class="contact-content">
+            <p>
+                I'm always interested in hearing about new opportunities, exciting projects, and potential collaborations. 
+                Whether you have a project in mind or just want to chat about AI, machine learning, or web development, 
+                feel free to reach out!
+            </p>
+            <div class="contact-links">
+                <a href="mailto:Ivan98lee@gmail.com" class="contact-link">
+                    📧 Email
+                </a>
+                <a href="https://www.linkedin.com/in/ivan-cheung-lee/" class="contact-link">
+                    💼 LinkedIn
+                </a>
+                <a href="https://github.com/CheungLeeLee" class="contact-link">
+                    🔗 GitHub
+                </a>
+            </div>
+            <p style="margin-top: 2rem; color: var(--text-secondary);">
+                📍 Stockholm, Sweden<br>
+                ⚡ Available for projects and collaborations<br>
+                🎓 Completing AI Development program at Nackademin
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Ivan Lee. Built with passion for AI and sustainable technology ☕</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('light-theme');
+            const themeToggle = document.querySelector('.theme-toggle');
+            const isLight = document.body.classList.contains('light-theme');
+            themeToggle.textContent = isLight ? '☀️' : '🌙';
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.8s ease-out';
+            observer.observe(section);
+        });
+
+        // Make hero section immediately visible
+        document.querySelector('.hero').style.opacity = '1';
+        document.querySelector('.hero').style.transform = 'translateY(0)';
+    </script>
+</body>
+</html>

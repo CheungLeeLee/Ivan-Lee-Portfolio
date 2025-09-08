@@ -387,7 +387,7 @@
         .cv-button {
             background: transparent;
             border: 1px solid var(--border-color);
-            color: var(--text-primary);
+            color: #ffffff;
             padding: 0.5rem 1rem;
             border-radius: 8px;
             cursor: pointer;
@@ -397,7 +397,7 @@
 
         .cv-button:hover {
             background: rgba(99, 102, 241, 0.12);
-            color: var(--text-primary);
+            color: #ffffff;
             border-color: var(--accent-color);
         }
 
@@ -485,6 +485,15 @@
         .pdf-fallback {
             padding: 2rem;
             color: var(--text-secondary);
+        }
+
+        /* Force CV modal to stay dark regardless of site theme */
+        #cvModal {
+            --secondary-bg: #111111;
+            --card-bg: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e1;
+            --border-color: #333333;
         }
 
         /* Light Theme */
@@ -641,9 +650,8 @@
                 <p>A comprehensive fitness tracking platform that combines health data with intelligent insights. My crown achievement showcasing full-stack development and user-centered design.</p>
                 <div class="project-tags">
                     <span class="tag">Python</span>
-                    <span class="tag">Django</span>
-                    <span class="tag">Machine Learning</span>
-                    <span class="tag">AI</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Fullstack</span>
                     <span class="tag">Health Data</span>
                 </div>
                 <div class="project-links">
@@ -667,9 +675,7 @@
                 <p>An intelligent travel planning application that helps users discover destinations, plan itineraries, and get personalized travel recommendations based on preferences and budget. Combines AI with real-world travel data to create meaningful user experiences.</p>
                 <div class="project-tags">
                     <span class="tag">Python</span>
-                    <span class="tag">Flask</span>
                     <span class="tag">AI</span>
-                    <span class="tag">API Integration</span>
                     <span class="tag">Travel Planning</span>
                 </div>
                 <div class="project-links">
@@ -687,10 +693,8 @@
                 <p>A sophisticated AI system where multiple agents engage in structured debates on various topics. Demonstrates advanced AI concepts including agent coordination, natural language processing, and decision making. Built as part of my deep learning studies at Nackademin.</p>
                 <div class="project-tags">
                     <span class="tag">Python</span>
-                    <span class="tag">Deep Learning</span>
-                    <span class="tag">NLP</span>
-                    <span class="tag">Multi-Agent Systems</span>
-                    <span class="tag">AI Ethics</span>
+                    <span class="tag">Multi Agent</span>
+                    <span class="tag">AI</span>
                 </div>
                 <div class="project-links">
                     <a href="https://github.com/CheungLeeLee/multi-agent" class="project-link" target="_blank" rel="noopener noreferrer">
@@ -707,7 +711,6 @@
                 <p>A real-time sports betting odds comparison platform that aggregates data from multiple sources to help users find the best betting opportunities. Features live updates, statistical analysis, and data visualization for informed decision making.</p>
                 <div class="project-tags">
                     <span class="tag">Python</span>
-                    <span class="tag">FastAPI</span>
                     <span class="tag">Web Scraping</span>
                     <span class="tag">Data Analysis</span>
                     <span class="tag">Real-time Data</span>
